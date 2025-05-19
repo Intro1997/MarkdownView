@@ -236,6 +236,7 @@ struct CmarkNodeVisitor: @preconcurrency MarkupVisitor {
         case .text:
             return MarkdownNodeView {
                 nodeView.asText!
+                    .textSelection(.disabled)
                     .contentShape(.rect)
                     #if os(macOS)
                     .onTapGesture {
@@ -253,6 +254,7 @@ struct CmarkNodeVisitor: @preconcurrency MarkupVisitor {
                 Link(destination: url) {
                     nodeView
                 }
+                .textSelection(.disabled)
                 .foregroundStyle(configuration.linkTintColor)
             }
         }
